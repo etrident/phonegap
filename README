@@ -1,0 +1,17 @@
+This is a simple HelloWorld android project, which sends the message from javascript to native android class and vice-versa. Lines are commented wherever required. 
+
+Create an android project using phonegap and refer the following files
+* PhonegapHelloWorld\example\assets\www\index.html
+* PhonegapHelloWorld\example\res\xml\config.xml
+* PhonegapHelloWorld\example\src\com\example\myplugin\HelloPlugin.java
+
+For Windows,
+Create a phonegap project for windows
+* Use the same index.html as in the given android projec
+* Find "config.xml" and do the necessary changes as in the given android project. (In, windows-phone-8 change "wp8\template\config.xml")
+* While creating native class, extend the class "BaseCommand"
+* Remember, arguments while passing from javascript to native or vice versa will be in JSON
+  You can use simple JSON deserialization.
+  string arg = JsonHelper.Deserialize<string[]>(arg)[0];
+* Passing value from C# to javascript 
+  DispatchCommandResult(new PluginResult(PluginResult.Status.OK, "{arg:\"Hello World\"}"));
