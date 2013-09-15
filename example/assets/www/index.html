@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Hello World</title>
+    </head>
+    <body>
+        <script>
+        	var helloPlugin = {
+				sayHello: function(arg, successCallback, errorCallback) {
+					alert("Function Called");
+					cordova.exec(
+						successCallback, 
+						errorCallback, 
+						'HelloPlugin', // mapped to native Java class "HelloPlugin"
+						'sayHelloWorld', // Action/Service name
+						[{                  // *** JSON Array of arguments
+							"arg": arg,
+						}]
+					); 
+				}
+			}
+		</script>
+		<label>Click Submit</lable>
+		<!-- Plugin name followed by action name. function(arguments, Success, Error). Sucess response will be JSON-->
+		<input type="submit" value="submit" onClick="helloPlugin.sayHello('World', function(msg) { alert('Success: ' + msg) }, function(message) { alert('Error:' + message); })">
+		        <script type="text/javascript" src="cordova.js"></script>
+		        <script type="text/javascript" src="js/index.js"></script>
+		        <script type="text/javascript">app.initialize();
+		        </script>
+    </body>
+</html>
